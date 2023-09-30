@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdxcvox3to7on"]
+
+[ext_resource type="Script" path="res://ui/coin_script.gd" id="1_3w1va"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 700.0
+
+[node name="add" type="Button" parent="."]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 112.0
+offset_right = 1147.0
+offset_bottom = 143.0
+text = "click me to add money"
+
+[node name="coin_counter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+script = ExtResource("1_3w1va")
+
+[node name="buy" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1094.0
+offset_top = 166.0
+offset_right = 1135.0
+offset_bottom = 197.0
+text = "buy "
+
+[connection signal="pressed" from="add" to="coin_counter" method="_on_button_pressed"]
+[connection signal="pressed" from="buy" to="coin_counter" method="buy"]
