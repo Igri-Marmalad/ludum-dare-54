@@ -1,12 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdxcvox3to7on"]
 
-[ext_resource type="Script" path="res://ui/coin_script.gd" id="1_3w1va"]
+[ext_resource type="Script" path="res://ui/control.gd" id="1_vkva6"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
 offset_bottom = 700.0
+script = ExtResource("1_vkva6")
 
 [node name="add" type="Button" parent="."]
 layout_mode = 0
@@ -24,7 +25,6 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
-script = ExtResource("1_3w1va")
 
 [node name="buy" type="Button" parent="."]
 layout_mode = 0

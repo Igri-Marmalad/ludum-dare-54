@@ -4,7 +4,9 @@ extends Node2D
 var sprite_node
 var timer_node
 
-signal plant_destroyed(coins)
+@onready
+var money_manager = get_node("/root/MoneyManager")
+
 
 func _ready():
 	# Get the Sprite and Timer nodes
@@ -23,5 +25,5 @@ func _on_timer_timeout():
 func _on_button_pressed():
 	if(sprite_node.frame == sprite_node.hframes - 1):
 		queue_free()
-		plant_destroyed.emit(5)
+		money_manager.add_coins(5)
 		
