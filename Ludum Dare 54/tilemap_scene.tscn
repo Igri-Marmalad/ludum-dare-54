@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://j4ba8ma4jjex"]
+[gd_scene load_steps=10 format=3 uid="uid://e8tbv0hdm58v"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_0n5x1"]
 [ext_resource type="Texture2D" uid="uid://di66wro1o8kaw" path="res://sprites/Terrains_Dirt_Grass_Sand_Cliffs.png" id="1_aaxye"]
 [ext_resource type="Texture2D" uid="uid://tlb3lfxkt21r" path="res://sprites/water.png" id="2_lu22a"]
 [ext_resource type="Texture2D" uid="uid://b7thkdl5a4j86" path="res://sprites/vegetables.png" id="4_6w7u0"]
+[ext_resource type="PackedScene" uid="uid://cdxcvox3to7on" path="res://ui/control.tscn" id="5_cgul4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhyxk"]
 texture = ExtResource("1_aaxye")
@@ -296,3 +297,10 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="UI" parent="." instance=ExtResource("5_cgul4")]
+offset_left = -280.0
+offset_top = -102.0
+offset_right = 870.0
+offset_bottom = 598.0
+scale = Vector2(0.406439, 0.3523)
