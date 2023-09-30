@@ -4,13 +4,24 @@ extends Label
 var coins = 0
 var money = 4
 
+
+var parent_node
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.text = "Coins: " + str(coins)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.text = "Coins: " + str(coins)
+	for node in get_tree().get_nodes_in_group("Plants"):
+		if not node.is_connected("plant_destroyed", Callable(self, "_on_plant_destroyed")):
+			node.connect("plant_destroyed", Callable(self, "_on_plant_destroyed"))
+
+func _on_plant_destroyed(money):
+	print("DESTROYED")
+	coins += money
 
 # Called when the button is pressed.
 func _on_button_pressed():
