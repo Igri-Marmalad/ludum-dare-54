@@ -4,10 +4,13 @@ extends Node2D
 var sprite_node
 var timer_node
 
+signal plant_destroyed(coins)
+
 func _ready():
 	# Get the Sprite and Timer nodes
 	sprite_node = get_node("Sprite2D")
 	timer_node = get_node("Timer")
+	add_to_group("Plants")
 
 		
 # Cycle through the spritesheet stopping at the last frame
@@ -20,3 +23,5 @@ func _on_timer_timeout():
 func _on_button_pressed():
 	if(sprite_node.frame == sprite_node.hframes - 1):
 		queue_free()
+		plant_destroyed.emit(5)
+		
