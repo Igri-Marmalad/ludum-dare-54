@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://e8tbv0hdm58v"]
+[gd_scene load_steps=11 format=3 uid="uid://e8tbv0hdm58v"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_0n5x1"]
 [ext_resource type="Texture2D" uid="uid://di66wro1o8kaw" path="res://sprites/Terrains_Dirt_Grass_Sand_Cliffs.png" id="1_aaxye"]
 [ext_resource type="Texture2D" uid="uid://tlb3lfxkt21r" path="res://sprites/water.png" id="2_lu22a"]
 [ext_resource type="Texture2D" uid="uid://b7thkdl5a4j86" path="res://sprites/vegetables.png" id="4_6w7u0"]
 [ext_resource type="PackedScene" uid="uid://cdxcvox3to7on" path="res://ui/control.tscn" id="5_cgul4"]
+[ext_resource type="PackedScene" uid="uid://bmj1jnssqldea" path="res://models/mobs/zombie/zombie.tscn" id="6_e5033"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhyxk"]
 texture = ExtResource("1_aaxye")
@@ -304,3 +305,6 @@ offset_top = -106.0
 offset_right = 763.0
 offset_bottom = 504.0
 scale = Vector2(0.406439, 0.3523)
+
+[node name="zombie" parent="." instance=ExtResource("6_e5033")]
+position = Vector2(-135, 31)
