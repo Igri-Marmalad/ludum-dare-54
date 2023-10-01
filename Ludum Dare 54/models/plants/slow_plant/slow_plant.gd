@@ -12,14 +12,10 @@ var money_manager = get_node("/root/MoneyManager")
 
 var current_progress = 0
 
-##napravi logika
-var locked = 0
-
-#5
-#0.5
-#20
+#10
+#1
+#40
 func _ready():
-	
 	# Get the Sprite and Timer nodes
 	sprite_node = get_node("Sprite2D")
 	timer_node = get_node("Timer")
@@ -33,7 +29,6 @@ func _ready():
 	timer_node.start()
 	timer_node_2.start()
 	
-
 	
 # Cycle through the spritesheet stopping at the last frame
 func _on_timer_timeout():
@@ -45,12 +40,10 @@ func _on_timer_timeout():
 # Destroy the object when the last sprite frame is rendered and the object is pressed,
 func _on_button_pressed():
 	if sprite_node.frame == sprite_node.hframes - 1:
-		if locked == 0: 
-			queue_free()
-			money_manager.add_coins(5)
+		queue_free()
+		money_manager.add_coins(15)
 
 
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
-	current_progress+=0.7
-
+	current_progress+=1.5

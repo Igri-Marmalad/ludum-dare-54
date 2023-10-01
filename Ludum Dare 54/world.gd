@@ -14,12 +14,17 @@ var plant_set_source = 2
 var can_till = "can_till"
 var can_plant = "can_plant"
 
-enum FARMING_MODES {TILL, PLANT}
+enum FARMING_MODES {TILL, PLANT, PICK}
+enum PLANT_TYPES {BASIC, FAST, SLOW}
 
 var farming_mode = FARMING_MODES.TILL
+var plant_mode = PLANT_TYPES.BASIC
 
 var basic_plant = preload("res://models/plants/basic_plant/basic_plant.tscn")
+var fast_plant = preload("res://models/plants/fast_plant/fast_plant.tscn")
+var slow_plant = preload("res://models/plants/slow_plant/slow_plant.tscn")
 
+signal lock(mode)
 
 @onready
 var money_manager = get_node("/root/MoneyManager")
@@ -27,6 +32,7 @@ var money_manager = get_node("/root/MoneyManager")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("UI").connect("farming_mode_changed", Callable(self, "_on_farming_mode_changed"))
+	get_node("UI").connect("seed_signal", Callable(self, "_on_signal_mode_changed"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +45,8 @@ func _input(event):
 		farming_mode = FARMING_MODES.TILL
 	if Input.is_action_just_pressed("toggle_plant"):
 		farming_mode = FARMING_MODES.PLANT
-	
+	if Input.is_action_just_pressed("toggle_pick"):
+		farming_mode = FARMING_MODES.PICK
 	if Input.is_action_just_pressed("left_click"):
 			do_action()
 			
@@ -50,16 +57,38 @@ func do_action():
 		var mouse_pos = get_global_mouse_position()
 		var tile_mouse_pos = tile_map.local_to_map(mouse_pos)
 		#Hoeing ground
+	
+
 		if farming_mode == FARMING_MODES.TILL && retrieve_custom_data(tile_mouse_pos, can_till, ground_layer):
+
 			var atlas_cord = Vector2i(0, 3) #the id of the tile we want to place
 			tile_map.set_cell(ground_layer, tile_mouse_pos, ground_set_source, atlas_cord)
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
+			
+			#todo 
+			#OVA DA SE REFACTOR BOZEEE
+
 			if(money_manager.buy(3)):
-				var plant = basic_plant.instantiate()
-				print(tile_mouse_pos*16)
-				plant.position = tile_mouse_pos*16+Vector2i(8,8)
-				add_child(plant)
+				if plant_mode==PLANT_TYPES.BASIC:
+					var plant = basic_plant.instantiate()
+					print(tile_mouse_pos*16)
+					plant.position = tile_mouse_pos*16+Vector2i(8,8)
+					add_child(plant)
+				if plant_mode==PLANT_TYPES.FAST:
+					var plant = fast_plant.instantiate()
+					print(tile_mouse_pos*16)
+					plant.position = tile_mouse_pos*16+Vector2i(8,8)
+					add_child(plant)
+				if plant_mode==PLANT_TYPES.SLOW:
+					var plant = slow_plant.instantiate()
+					print(tile_mouse_pos*16)
+					plant.position = tile_mouse_pos*16+Vector2i(8,8)
+					add_child(plant)
+					
+		if (farming_mode==FARMING_MODES.PICK):
+			pass
+			#napravi logika
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
@@ -71,9 +100,20 @@ func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
 		
 func _on_farming_mode_changed(mode):
 	# Update the farming mode variable based on the emitted signal
-	if (mode == 2):
-		farming_mode = FARMING_MODES.PLANT
 	if (mode == 1):
 		farming_mode = FARMING_MODES.TILL
+	if (mode == 2):
+		farming_mode = FARMING_MODES.PLANT
+	if (mode == 3):
+		farming_mode = FARMING_MODES.PICK
+		
+func _on_signal_mode_changed(mode):
+	# Update the farming mode variable based on the emitted signal
+	if (mode == 1):
+		plant_mode = PLANT_TYPES.BASIC
+	if (mode == 2):
+		plant_mode = PLANT_TYPES.SLOW
+	if (mode == 3):
+		plant_mode = PLANT_TYPES.FAST
 
 
