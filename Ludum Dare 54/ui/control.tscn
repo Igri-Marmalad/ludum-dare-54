@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdxcvox3to7on"]
+[gd_scene load_steps=4 format=3 uid="uid://cdxcvox3to7on"]
 
 [ext_resource type="Script" path="res://ui/control.gd" id="1_vkva6"]
+[ext_resource type="Texture2D" uid="uid://x6o6nersi5p4" path="res://ui/img/hoe.png" id="2_ioipq"]
+[ext_resource type="Texture2D" uid="uid://c405pa112sf2d" path="res://ui/img/seed.jpg" id="3_yoab1"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -9,30 +11,54 @@ offset_right = 1150.0
 offset_bottom = 700.0
 script = ExtResource("1_vkva6")
 
-[node name="add" type="Button" parent="."]
-layout_mode = 0
-offset_left = 965.0
-offset_top = 112.0
-offset_right = 1147.0
-offset_bottom = 143.0
-text = "click me to add money"
-
 [node name="coin_counter" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -75.0
+offset_top = 51.0
+offset_right = -35.0
+offset_bottom = 74.0
 grow_horizontal = 0
 
-[node name="buy" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1094.0
-offset_top = 166.0
-offset_right = 1135.0
-offset_bottom = 197.0
-text = "buy "
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -125.0
+offset_right = 126.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[connection signal="pressed" from="add" to="coin_counter" method="_on_button_pressed"]
-[connection signal="pressed" from="buy" to="coin_counter" method="buy"]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -116.0
+offset_right = 69.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="till_button" type="TextureButton" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("2_ioipq")
+
+[node name="plant" type="TextureButton" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_yoab1")

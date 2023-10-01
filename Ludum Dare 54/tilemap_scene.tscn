@@ -299,8 +299,8 @@ layer_2/tile_data = PackedInt32Array()
 zoom = Vector2(3, 3)
 
 [node name="UI" parent="." instance=ExtResource("5_cgul4")]
-offset_left = -280.0
-offset_top = -102.0
-offset_right = 870.0
-offset_bottom = 598.0
+offset_left = -194.0
+offset_top = -106.0
+offset_right = 763.0
+offset_bottom = 504.0
 scale = Vector2(0.406439, 0.3523)
