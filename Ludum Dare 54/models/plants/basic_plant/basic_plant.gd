@@ -4,6 +4,9 @@ extends Node2D
 var sprite_node
 var timer_node
 
+var health = 5
+
+
 @onready
 var money_manager = get_node("/root/MoneyManager")
 
@@ -26,4 +29,9 @@ func _on_button_pressed():
 	if(sprite_node.frame == sprite_node.hframes - 1):
 		queue_free()
 		money_manager.add_coins(5)
-		
+
+# Attack the plant and destroy if it has no more health
+func attacked(damage):
+	health -= damage
+	if(health <= 0):
+		queue_free()
