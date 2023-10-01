@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://duwe2by8dbwa2"]
+[gd_scene load_steps=11 format=3 uid="uid://culx4wonjucnx"]
 
 [ext_resource type="Texture2D" uid="uid://di66wro1o8kaw" path="res://sprites/Terrains_Dirt_Grass_Sand_Cliffs.png" id="1_aaxye"]
 [ext_resource type="Script" path="res://grid_system.gd" id="1_wumhd"]
