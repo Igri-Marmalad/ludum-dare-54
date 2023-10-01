@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var tile_map : TileMap = $TileMap
 
+@onready var tile_map : TileMap = $TileMap
 
 # Preload nodes
 var care_package_node = preload("res://models/care_package/care_package.tscn")
@@ -95,5 +95,4 @@ func _on_farming_mode_changed(mode):
 		farming_mode = FARMING_MODES.PLANT
 	if (mode == 1):
 		farming_mode = FARMING_MODES.TILL
-
 
