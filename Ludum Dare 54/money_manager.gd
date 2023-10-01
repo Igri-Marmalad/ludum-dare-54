@@ -3,8 +3,6 @@ extends Node
 # Exported variable to control coins (visible in the editor).
 var _coins = 0
 
-var coin_counter_label
-
 signal update_coin_ui_value(coins)
 
 func _ready():

@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var tile_map : TileMap = $TileMap
 
+
+# Preload nodes
+var care_package_node = preload("res://models/care_package/care_package.tscn")
+var basic_plant_node = preload("res://models/plants/basic_plant/basic_plant.tscn")
+
+
 #id of the tilemap layer
 var ground_layer = 1
 var plant_layer = 2
@@ -18,7 +24,9 @@ enum FARMING_MODES {TILL, PLANT}
 
 var farming_mode = FARMING_MODES.TILL
 
-var basic_plant = preload("res://models/plants/basic_plant/basic_plant.tscn")
+
+var rng = RandomNumberGenerator.new()
+var care_package_spawn_time = rng.randf_range(60, 300)
 
 
 @onready
@@ -31,7 +39,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	spawn_care_package(delta)
 
 func _input(event):
 	#Set mode
@@ -45,6 +53,18 @@ func _input(event):
 			
 			#tile_map.set_cell(plant_layer, tile_mouse_pos, plant_set_source, atlas_cord)	
 
+# Spawn the care package in between 60 and 300 frames
+func spawn_care_package(delta):
+	care_package_spawn_time -= delta;
+	if(care_package_spawn_time < 0):
+		var care_package = care_package_node.instantiate()
+		care_package.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
+		add_child(care_package)
+		# Reset the care package spawn time
+		care_package_spawn_time = rng.randf_range(60, 300)
+		return
+	return
+
 
 func do_action():
 		var mouse_pos = get_global_mouse_position()
@@ -56,10 +76,10 @@ func do_action():
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			if(money_manager.buy(3)):
-				var plant = basic_plant.instantiate()
+				var basic_plant = basic_plant_node.instantiate()
 				print(tile_mouse_pos*16)
-				plant.position = tile_mouse_pos*16+Vector2i(8,8)
-				add_child(plant)
+				basic_plant.position = tile_mouse_pos*16+Vector2i(8,8)
+				add_child(basic_plant)
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
