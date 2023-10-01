@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/control.gd" id="1_vkva6"]
 [ext_resource type="Texture2D" uid="uid://x6o6nersi5p4" path="res://ui/img/hoe.png" id="2_ioipq"]
-[ext_resource type="Texture2D" uid="uid://c405pa112sf2d" path="res://ui/img/seed.jpg" id="3_yoab1"]
+[ext_resource type="Texture2D" uid="uid://b56blsr2v8k1i" path="res://ui/img/seed.jpg" id="3_yoab1"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

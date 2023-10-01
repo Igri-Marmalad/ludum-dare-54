@@ -1,0 +1,219 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnatdyfsxupmu"]
+
+[ext_resource type="Theme" uid="uid://bdu0u7e24nl5r" path="res://shop/shop.tres" id="1_u35vn"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u35vn")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 1
+
+[node name="Plants" type="Button" parent="TabContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Plants"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Plants/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Plant1" type="BoxContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant1"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant1/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant1"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="Plant2" type="BoxContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant2"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant2/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="Plant3" type="BoxContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant3"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant3/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant3"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="Plant4" type="BoxContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant4"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant4/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant4"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="Plant5" type="BoxContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant5"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant5/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Plants/ScrollContainer/VBoxContainer/Plant5"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="Upgrades" type="Button" parent="TabContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Upgrades/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WateredPlantDurationUpgrade" type="BoxContainer" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
+
+[node name="WateredPlantDurationUpgrade2" type="BoxContainer" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade2"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade2/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Buying water can duration thing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Upgrades/ScrollContainer/VBoxContainer/WateredPlantDurationUpgrade2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "120 gold"
+metadata/_edit_lock_ = true
