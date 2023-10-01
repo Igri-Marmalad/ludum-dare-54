@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://belcsrelofabh"]
+
+[ext_resource type="PackedScene" path="res://tilemap_scene.tscn" id="1_18pp7"]
+
+[node name="Main Level" type="Node2D"]
+
+[node name="world" parent="." instance=ExtResource("1_18pp7")]
