@@ -24,7 +24,8 @@ var basic_plant = preload("res://models/plants/basic_plant/basic_plant.tscn")
 var fast_plant = preload("res://models/plants/fast_plant/fast_plant.tscn")
 var slow_plant = preload("res://models/plants/slow_plant/slow_plant.tscn")
 
-signal lock(mode)
+var original_till
+var original_plant
 
 @onready
 var money_manager = get_node("/root/MoneyManager")
@@ -33,7 +34,8 @@ var money_manager = get_node("/root/MoneyManager")
 func _ready():
 	get_node("UI").connect("farming_mode_changed", Callable(self, "_on_farming_mode_changed"))
 	get_node("UI").connect("seed_signal", Callable(self, "_on_signal_mode_changed"))
-
+	original_till = preload("res://ui/img/hoe.png")
+	original_plant = preload("res://ui/img/seed.jpg")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,6 +46,7 @@ func _input(event):
 	if Input.is_action_just_pressed("toggle_hoe"):
 		farming_mode = FARMING_MODES.TILL
 	if Input.is_action_just_pressed("toggle_plant"):
+
 		farming_mode = FARMING_MODES.PLANT
 	if Input.is_action_just_pressed("toggle_pick"):
 		farming_mode = FARMING_MODES.PICK
@@ -60,9 +63,9 @@ func do_action():
 	
 
 		if farming_mode == FARMING_MODES.TILL && retrieve_custom_data(tile_mouse_pos, can_till, ground_layer):
-
 			var atlas_cord = Vector2i(0, 3) #the id of the tile we want to place
 			tile_map.set_cell(ground_layer, tile_mouse_pos, ground_set_source, atlas_cord)
+
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
@@ -102,8 +105,10 @@ func _on_farming_mode_changed(mode):
 	# Update the farming mode variable based on the emitted signal
 	if (mode == 1):
 		farming_mode = FARMING_MODES.TILL
+		Input.set_custom_mouse_cursor(original_till, Input.CURSOR_ARROW, Vector2(0,0))
 	if (mode == 2):
 		farming_mode = FARMING_MODES.PLANT
+		Input.set_custom_mouse_cursor(original_plant, Input.CURSOR_ARROW, Vector2(0,0))
 	if (mode == 3):
 		farming_mode = FARMING_MODES.PICK
 		
