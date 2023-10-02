@@ -7,8 +7,6 @@ var loading_bar
 var timer_node_2
 
 
-
-
 @onready
 var money_manager = get_node("/root/MoneyManager")
 # Variables for smooth loading bar interpolation

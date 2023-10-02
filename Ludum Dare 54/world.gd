@@ -130,9 +130,9 @@ func do_action():
 					var plant = selected_plant_class.instantiate()
 					print(tile_mouse_pos * 16)
 					plant.position = tile_mouse_pos * 16 + Vector2i(8, 8)
-					basic_plant.connect("free_space", Callable(self, "free_occupied_tile"))
+					plant.connect("free_space", Callable(self, "free_occupied_tile"))
 					add_child(plant)
-					occupied_tiles.append(basic_plant.position)
+					occupied_tiles.append(plant.position)
 					
 
 
