@@ -10,6 +10,8 @@ var timer_node_2
 var money_manager = get_node("/root/MoneyManager")
 # Variables for smooth loading bar interpolation
 
+signal free_space(posi)
+
 var current_progress = 0
 
 #2.5
@@ -41,6 +43,7 @@ func _on_timer_timeout():
 func _on_button_pressed():
 	if sprite_node.frame == sprite_node.hframes - 1:
 		if money_manager.get_locked()==0: 
+			emit_signal("free_space", position)
 			queue_free()
 			money_manager.add_coins(2)
 
