@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://tlb3lfxkt21r" path="res://sprites/water.png" id="2_lu22a"]
 [ext_resource type="Texture2D" uid="uid://b7thkdl5a4j86" path="res://sprites/vegetables.png" id="4_6w7u0"]
 [ext_resource type="PackedScene" uid="uid://cdxcvox3to7on" path="res://ui/control.tscn" id="5_cgul4"]
-[ext_resource type="Texture2D" uid="uid://bl717kp8fouvx" path="res://sprites/Tileset_V2.png" id="5_js8ru"]
+[ext_resource type="Texture2D" path="res://sprites/Tileset_V2.png" id="5_js8ru"]
 [ext_resource type="PackedScene" uid="uid://bnatdyfsxupmu" path="res://shop/shop.tscn" id="6_pgtd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uqpb7"]
@@ -22,7 +22,9 @@ texture_region_size = Vector2i(32, 32)
 3:2/0/custom_data_1 = true
 4:2/0 = 0
 4:2/0/custom_data_1 = true
-5:1/0 = 0
+5:0/animation_columns = 1
+5:0/animation_frame_0/duration = 1.0
+5:0/animation_frame_1/duration = 1.0
 5:0/0 = 0
 0:2/0 = 0
 0:1/0 = 0

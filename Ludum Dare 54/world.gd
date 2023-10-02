@@ -60,7 +60,7 @@ var occupied_tiles = []
 
 var rng = RandomNumberGenerator.new()
 var care_package_spawn_time = rng.randf_range(60, 300)
-var zombie_spawn_time = rng.randf_range(30, 120)
+var zombie_spawn_time = rng.randf_range(10, 15)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -107,7 +107,7 @@ func spawn_zombie(delta):
 		zombie.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
 		add_child(zombie)
 		# Reset the care package spawn time
-		zombie_spawn_time = rng.randf_range(30, 120)
+		zombie_spawn_time = rng.randf_range(3, 7)
 		return
 	return
 

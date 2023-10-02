@@ -12,7 +12,7 @@ var timer = get_node("Timer")
 var damage = 1
 var health = ceil(rng.randf_range(3, 5))
 var coins_dropped = ceil(rng.randf_range(2, 5))
-var speed = 0.2
+var speed = 0.78
 
 var targeted_plant = pick_plant_to_attack()
 
