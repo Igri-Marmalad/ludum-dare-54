@@ -24,6 +24,8 @@ enum FARMING_MODES {TILL, PLANT}
 
 var farming_mode = FARMING_MODES.TILL
 
+var occupied_tiles = []
+
 
 var rng = RandomNumberGenerator.new()
 var care_package_spawn_time = rng.randf_range(60, 300)
@@ -86,11 +88,14 @@ func do_action():
 			tile_map.set_cell(ground_layer, tile_mouse_pos, ground_set_source, atlas_cord)
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
+			if tile_mouse_pos in occupied_tiles:
+				return
 			if(money_manager.buy(3)):
 				var basic_plant = basic_plant_node.instantiate()
 				print(tile_mouse_pos*16)
 				basic_plant.position = tile_mouse_pos*16+Vector2i(8,8)
 				add_child(basic_plant)
+				occupied_tiles.append(tile_mouse_pos)
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
@@ -106,4 +111,6 @@ func _on_farming_mode_changed(mode):
 		farming_mode = FARMING_MODES.PLANT
 	if (mode == 1):
 		farming_mode = FARMING_MODES.TILL
+		
+		
 

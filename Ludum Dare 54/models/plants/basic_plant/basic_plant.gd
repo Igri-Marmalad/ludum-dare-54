@@ -10,6 +10,9 @@ var health = 5
 @onready
 var money_manager = get_node("/root/MoneyManager")
 
+@onready
+var grid_system = get_node("/root/GridSystem")
+
 
 func _ready():
 	# Get the Sprite and Timer nodes
