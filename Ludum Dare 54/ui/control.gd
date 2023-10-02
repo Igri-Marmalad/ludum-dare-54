@@ -135,9 +135,9 @@ func _set_farming_mode_buttons():
 	original_till = preload("res://ui/img/hoe.png")
 	original_plant = preload("res://ui/img/seed.png")
 	selected_till = preload("res://ui/img/theselectedhoe.png")
-	selected_plant = preload("res://ui/img/theselectedseed.jpg")
+	selected_plant = preload("res://ui/img/the_selected_seed.png")
 	original_pick = preload("res://ui/img/pick.png")
-	selected_pick = preload("res://ui/img/selected_pick.jpg")
+	selected_pick = preload("res://ui/img/selected_pick.png")
 	
 	till_button.connect("pressed", Callable(self, "_on_till_button_pressed"))
 	plant_button.connect("pressed",Callable( self, "_on_plant_button_pressed"))
