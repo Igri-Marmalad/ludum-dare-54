@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var tile_map : TileMap = $TileMap
 
+@onready
+var money_manager = get_node("/root/MoneyManager")
+
 #id of the tilemap layer
 var ground_layer = 1
 var plant_layer = 2
@@ -14,29 +17,37 @@ var plant_set_source = 2
 var can_till = "can_till"
 var can_plant = "can_plant"
 
+#mode enums
 enum FARMING_MODES {TILL, PLANT, PICK}
-enum PLANT_TYPES {BASIC, FAST, SLOW}
+enum PLANT_TYPES {BASIC, FAST, SLOW, OTHER}
 
+#setting the mode that opens when u start the game
 var farming_mode = FARMING_MODES.TILL
 var plant_mode = PLANT_TYPES.BASIC
 
+#preloading resources
 var basic_plant = preload("res://models/plants/basic_plant/basic_plant.tscn")
 var fast_plant = preload("res://models/plants/fast_plant/fast_plant.tscn")
 var slow_plant = preload("res://models/plants/slow_plant/slow_plant.tscn")
+var other_plant = preload("res://models/plants/other_plant/other_plant.tscn")
 
-var original_till
-var original_plant
+#for cursor images
+var original_till = preload("res://ui/img/hoe.png")
+var original_plant = preload("res://ui/img/seed.jpg")
+var original_pick = preload("res://ui/img/pick.jpg")
 
-@onready
-var money_manager = get_node("/root/MoneyManager")
+#plant inits dictiornary
+var plant_classes = {
+	   			PLANT_TYPES.BASIC: basic_plant,
+	  			PLANT_TYPES.FAST: fast_plant,
+				PLANT_TYPES.SLOW: slow_plant,
+				PLANT_TYPES.OTHER: other_plant
+				}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("UI").connect("farming_mode_changed", Callable(self, "_on_farming_mode_changed"))
-	get_node("UI").connect("seed_signal", Callable(self, "_on_signal_mode_changed"))
-	original_till = preload("res://ui/img/hoe.png")
-	original_plant = preload("res://ui/img/seed.jpg")
-
+	get_node("UI").connect("seed_signal", Callable(self, "_on_signal_seed_changed"))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -53,7 +64,6 @@ func _input(event):
 	if Input.is_action_just_pressed("left_click"):
 			do_action()
 			
-			#tile_map.set_cell(plant_layer, tile_mouse_pos, plant_set_source, atlas_cord)	
 
 
 func do_action():
@@ -70,11 +80,7 @@ func do_action():
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
 			if(money_manager.buy(3)):
-				var plant_classes = {
-	   			PLANT_TYPES.BASIC: basic_plant,
-	  			PLANT_TYPES.FAST: fast_plant,
-				PLANT_TYPES.SLOW: slow_plant
-				}
+				
 	
 				var selected_plant_class = plant_classes.get(plant_mode)
 	
@@ -84,9 +90,7 @@ func do_action():
 					plant.position = tile_mouse_pos * 16 + Vector2i(8, 8)
 					add_child(plant)
 					
-		if (farming_mode==FARMING_MODES.PICK):
-			pass
-			#napravi logika
+
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
@@ -98,22 +102,27 @@ func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
 		
 func _on_farming_mode_changed(mode):
 	# Update the farming mode variable based on the emitted signal
-	if (mode == 1):
-		farming_mode = FARMING_MODES.TILL
-		Input.set_custom_mouse_cursor(original_till, Input.CURSOR_ARROW, Vector2(0,0))
-	if (mode == 2):
-		farming_mode = FARMING_MODES.PLANT
-		Input.set_custom_mouse_cursor(original_plant, Input.CURSOR_ARROW, Vector2(0,0))
-	if (mode == 3):
-		farming_mode = FARMING_MODES.PICK
-		
-func _on_signal_mode_changed(mode):
-	# Update the farming mode variable based on the emitted signal
-	if (mode == 1):
-		plant_mode = PLANT_TYPES.BASIC
-	if (mode == 2):
-		plant_mode = PLANT_TYPES.SLOW
-	if (mode == 3):
-		plant_mode = PLANT_TYPES.FAST
+	match mode:
+		1:
+			farming_mode = FARMING_MODES.TILL
+			Input.set_custom_mouse_cursor(original_till, Input.CURSOR_ARROW, Vector2(0, 0))
+			money_manager.lock()
+		2:
+			farming_mode = FARMING_MODES.PLANT
+			Input.set_custom_mouse_cursor(original_plant, Input.CURSOR_ARROW, Vector2(0, 0))
+			money_manager.lock()
+		3:
+			farming_mode = FARMING_MODES.PICK
+			money_manager.unlock()
+			Input.set_custom_mouse_cursor(original_pick, Input.CURSOR_ARROW, Vector2(0, 0))
 
-
+func _on_signal_seed_changed(mode):
+	match mode:
+		1:
+			plant_mode = PLANT_TYPES.BASIC
+		2:
+			plant_mode = PLANT_TYPES.SLOW
+		3:
+			plant_mode = PLANT_TYPES.FAST
+		4:
+			plant_mode = PLANT_TYPES.OTHER

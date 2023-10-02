@@ -40,10 +40,11 @@ func _on_timer_timeout():
 # Destroy the object when the last sprite frame is rendered and the object is pressed,
 func _on_button_pressed():
 	if sprite_node.frame == sprite_node.hframes - 1:
-		queue_free()
-		money_manager.add_coins(15)
+		if money_manager.get_locked()==0: 
+			queue_free()
+			money_manager.add_coins(15)
 
 
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
-	current_progress+=1.5
+	current_progress+=1.3

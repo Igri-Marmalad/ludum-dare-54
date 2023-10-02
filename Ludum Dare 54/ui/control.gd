@@ -18,7 +18,7 @@ var money_manager = get_node("/root/MoneyManager")
 @onready var basic = get_node("GridContainer2/basic")  # Replace with the actual names of your buttons
 @onready var fast = get_node("GridContainer2/fast")  # Replace with the actual names of your buttons
 @onready var slow = get_node("GridContainer2/slow")  
-
+@onready var other = get_node("GridContainer2/other")  
 #used for setting the mode
 var mode = 1
 var seed_mode = 1
@@ -38,6 +38,8 @@ var original_fast
 var selected_fast
 var original_slow
 var selected_slow
+var original_other
+var selected_other
 
 func _ready():
 	money_manager.connect("update_coin_ui_value", Callable(self, "_on_update_coin_ui_value"))
@@ -103,6 +105,7 @@ func _basic_pressed():
 	basic.texture_normal=selected_basic
 	slow.texture_normal=original_slow
 	fast.texture_normal=original_fast
+	other.texture_normal=original_other
 
 func _slow_pressed():
 	seed_mode=2
@@ -110,6 +113,7 @@ func _slow_pressed():
 	basic.texture_normal=original_basic
 	slow.texture_normal=selected_slow
 	fast.texture_normal=original_fast
+	other.texture_normal=original_other
 	
 func _fast_pressed():
 	seed_mode=3
@@ -117,14 +121,23 @@ func _fast_pressed():
 	basic.texture_normal=original_basic
 	slow.texture_normal=original_slow
 	fast.texture_normal=selected_fast
+	other.texture_normal=original_other
 	
+func _other_pressed():
+	seed_mode=4
+	set_seed_mode()
+	basic.texture_normal=original_basic
+	slow.texture_normal=original_slow
+	fast.texture_normal=original_fast
+	other.texture_normal=selected_other
+
 func _set_farming_mode_buttons():
 	original_till = preload("res://ui/img/hoe.png")
 	original_plant = preload("res://ui/img/seed.jpg")
 	selected_till = preload("res://ui/img/theselectedhoe.png")
 	selected_plant = preload("res://ui/img/theselectedseed.jpg")
 	original_pick = preload("res://ui/img/pick.jpg")
-	selected_pick = preload("res://ui/img/pick.jpg")
+	selected_pick = preload("res://ui/img/selected_pick.jpg")
 	
 	till_button.connect("pressed", Callable(self, "_on_till_button_pressed"))
 	plant_button.connect("pressed",Callable( self, "_on_plant_button_pressed"))
@@ -138,15 +151,19 @@ func _set_seed_buttons():
 	original_basic = preload("res://ui/img/1.png")
 	original_slow = preload("res://ui/img/3.jpg")
 	original_fast = preload("res://ui/img/2.jpg")
+	original_other =  preload("res://ui/img/4.jpg")
+	
 	selected_basic = preload("res://ui/img/1s.png")
 	selected_slow = preload("res://ui/img/3s.jpg")
 	selected_fast = preload("res://ui/img/2s.jpg")
+	selected_other = preload("res://ui/img/4s.jpg")
 	
 	basic.connect("pressed",Callable(self, "_basic_pressed"))
 	slow.connect("pressed",Callable(self, "_slow_pressed"))
 	fast.connect("pressed",Callable(self, "_fast_pressed"))
-	
+	other.connect("pressed",Callable(self, "_other_pressed"))
 	
 	basic.texture_normal=selected_basic
 	slow.texture_normal=original_slow
 	fast.texture_normal=original_fast
+	other.texture_normal=original_other
