@@ -10,8 +10,10 @@ var health = 5
 @onready
 var money_manager = get_node("/root/MoneyManager")
 
-@onready
-var grid_system = get_node("/root/GridSystem")
+#@onready
+#var grid_system = get_node("/root/GridSystem")
+
+signal free_space(posi)
 
 
 func _ready():
@@ -19,7 +21,6 @@ func _ready():
 	sprite_node = get_node("Sprite2D")
 	timer_node = get_node("Timer")
 	add_to_group("Plants")
-
 		
 # Cycle through the spritesheet stopping at the last frame
 func _on_timer_timeout():
@@ -30,6 +31,10 @@ func _on_timer_timeout():
 # Destroy the object when the last sprite frame is rendered and the object is pressed, 
 func _on_button_pressed():
 	if(sprite_node.frame == sprite_node.hframes - 1):
+		#if grid_system:
+		#grid_system.free_occupied_tile(position)
+		#free_space.emit(position)
+		emit_signal("free_space", position)
 		queue_free()
 		money_manager.add_coins(5)
 

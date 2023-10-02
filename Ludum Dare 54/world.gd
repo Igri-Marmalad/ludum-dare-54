@@ -94,9 +94,10 @@ func do_action():
 				var basic_plant = basic_plant_node.instantiate()
 				print(tile_mouse_pos*16)
 				basic_plant.position = tile_mouse_pos*16+Vector2i(8,8)
+				basic_plant.connect("free_space", Callable(self, "free_occupied_tile"))
 				add_child(basic_plant)
 				occupied_tiles.append(basic_plant.position)
-				free_occupied_tile(basic_plant.position)
+				#free_occupied_tile(basic_plant.position)
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
