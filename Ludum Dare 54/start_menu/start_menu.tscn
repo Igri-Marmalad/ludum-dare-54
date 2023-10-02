@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://7w40e540d8to"]
 
 [ext_resource type="Script" path="res://start_menu/start_menu.gd" id="1_633c8"]
-[ext_resource type="Texture2D" uid="uid://owpjsnyur4v" path="res://start_menu/image.png" id="2_r3urb"]
+[ext_resource type="Texture2D" uid="uid://bumqqk827nok5" path="res://start_menu/ZOMBI_AJKULA.png" id="2_n1oal"]
 [ext_resource type="FontFile" uid="uid://ck0r8fwmkxu8l" path="res://models/fonts/m04.TTF" id="4_nske8"]
 [ext_resource type="FontFile" uid="uid://8patdegwlwbv" path="res://models/fonts/m04b.TTF" id="5_bqsbq"]
 
@@ -48,10 +48,10 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_q1lc8")
 position = Vector2(240, 159)
 script = ExtResource("1_633c8")
 
-[node name="Image" type="Sprite2D" parent="."]
-position = Vector2(344, 169)
-scale = Vector2(1.06763, 1.07348)
-texture = ExtResource("2_r3urb")
+[node name="ZombiAjkula" type="Sprite2D" parent="."]
+position = Vector2(335.75, 166)
+scale = Vector2(0.60026, 0.598148)
+texture = ExtResource("2_n1oal")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = -240.0

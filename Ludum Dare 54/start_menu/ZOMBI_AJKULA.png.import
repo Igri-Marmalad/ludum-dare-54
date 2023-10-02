@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://owpjsnyur4v"
-path="res://.godot/imported/image.png-26702c7b49aa56dc693e1c22d0b3f2a3.ctex"
+uid="uid://bumqqk827nok5"
+path="res://.godot/imported/ZOMBI_AJKULA.png-eca0fda21a051759071f579de686c046.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://start_menu/image.png"
-dest_files=["res://.godot/imported/image.png-26702c7b49aa56dc693e1c22d0b3f2a3.ctex"]
+source_file="res://start_menu/ZOMBI_AJKULA.png"
+dest_files=["res://.godot/imported/ZOMBI_AJKULA.png-eca0fda21a051759071f579de686c046.ctex"]
 
 [params]
 
