@@ -88,14 +88,15 @@ func do_action():
 			tile_map.set_cell(ground_layer, tile_mouse_pos, ground_set_source, atlas_cord)
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
-			if tile_mouse_pos in occupied_tiles:
+			if tile_mouse_pos*16+Vector2i(8,8) as Vector2 in occupied_tiles:
 				return
 			if(money_manager.buy(3)):
 				var basic_plant = basic_plant_node.instantiate()
 				print(tile_mouse_pos*16)
 				basic_plant.position = tile_mouse_pos*16+Vector2i(8,8)
 				add_child(basic_plant)
-				occupied_tiles.append(tile_mouse_pos)
+				occupied_tiles.append(basic_plant.position)
+				free_occupied_tile(basic_plant.position)
 	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
@@ -113,7 +114,5 @@ func _on_farming_mode_changed(mode):
 		farming_mode = FARMING_MODES.TILL
 		
 		
-func free_occupied_tile(pos):
-	pos = pos - Vector2(8, 8)
-	pos = pos / 2
-	occupied_tiles.erase(pos)
+func free_occupied_tile(plant_position):
+	occupied_tiles.erase(plant_position)
