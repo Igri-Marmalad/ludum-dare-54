@@ -53,6 +53,8 @@ var plant_classes = {
 				PLANT_TYPES.OTHER: other_plant
 				}
 
+var occupied_tiles = []
+
 
 var rng = RandomNumberGenerator.new()
 var care_package_spawn_time = rng.randf_range(60, 300)
@@ -128,10 +130,11 @@ func do_action():
 					var plant = selected_plant_class.instantiate()
 					print(tile_mouse_pos * 16)
 					plant.position = tile_mouse_pos * 16 + Vector2i(8, 8)
+					basic_plant.connect("free_space", Callable(self, "free_occupied_tile"))
 					add_child(plant)
+					occupied_tiles.append(basic_plant.position)
 					
 
-	
 
 func retrieve_custom_data(tile_mouse_pos, custom_data_layer, layer):
 	var tile_data : TileData = tile_map.get_cell_tile_data(layer, tile_mouse_pos)
@@ -166,3 +169,8 @@ func _on_signal_seed_changed(mode):
 			plant_mode = PLANT_TYPES.FAST
 		4:
 			plant_mode = PLANT_TYPES.OTHER
+
+		
+func free_occupied_tile(plant_position):
+	occupied_tiles.erase(plant_position)
+
