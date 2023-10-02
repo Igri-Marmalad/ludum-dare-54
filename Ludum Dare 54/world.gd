@@ -42,8 +42,8 @@ var other_plant = preload("res://models/plants/other_plant/other_plant.tscn")
 
 #for cursor images
 var original_till = preload("res://ui/img/hoe.png")
-var original_plant = preload("res://ui/img/seed.jpg")
-var original_pick = preload("res://ui/img/pick.jpg")
+var original_plant = preload("res://ui/img/seed.png")
+var original_pick = preload("res://ui/img/pick.png")
 
 #plant inits dictiornary
 var plant_classes = {
@@ -56,7 +56,7 @@ var plant_classes = {
 
 var rng = RandomNumberGenerator.new()
 var care_package_spawn_time = rng.randf_range(60, 300)
-var zombie_spawn_time = rng.randf_range(5, 10)
+var zombie_spawn_time = rng.randf_range(30, 120)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -103,7 +103,7 @@ func spawn_zombie(delta):
 		zombie.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
 		add_child(zombie)
 		# Reset the care package spawn time
-		zombie_spawn_time = rng.randf_range(3, 10)
+		zombie_spawn_time = rng.randf_range(30, 120)
 		return
 	return
 
