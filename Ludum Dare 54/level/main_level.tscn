@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://belcsrelofabh"]
+[gd_scene load_steps=3 format=3 uid="uid://belcsrelofabh"]
 
-[ext_resource type="PackedScene" uid="uid://cjx7s8wn8eyky" path="res://tilemap_scene.tscn" id="1_18pp7"]
+[ext_resource type="PackedScene" uid="uid://e8tbv0hdm58v" path="res://tilemap_scene.tscn" id="1_18pp7"]
+[ext_resource type="AudioStream" uid="uid://d2wd5opstthyi" path="res://audio/valeto.mp3" id="2_fcbux"]
 
 [node name="Main Level" type="Node2D"]
 
 [node name="world" parent="." instance=ExtResource("1_18pp7")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_fcbux")
+autoplay = true
