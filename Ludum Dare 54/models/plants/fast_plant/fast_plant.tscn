@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cyc2lu7jxylt5"]
 
-[ext_resource type="Script" path="res://models/plants/basic_plant/basic_plant.gd" id="1_nsg3b"]
+[ext_resource type="Script" path="res://models/plants/fast_plant/fast_plant.gd" id="1_ttypb"]
 [ext_resource type="Texture2D" uid="uid://bdfefqarckrg0" path="res://models/plants/basic_plant/basic_plant.png" id="2_5r7fx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ii4kj"]
@@ -23,7 +23,7 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0.0192308, 0.987179)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_nsg3b")
+script = ExtResource("1_ttypb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5r7fx")

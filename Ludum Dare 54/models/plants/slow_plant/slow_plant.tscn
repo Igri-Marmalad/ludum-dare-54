@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlouwngdboh00"]
 
-[ext_resource type="Script" path="res://models/plants/basic_plant/basic_plant.gd" id="1_6m52l"]
+[ext_resource type="Script" path="res://models/plants/slow_plant/slow_plant.gd" id="1_np8st"]
 [ext_resource type="Texture2D" uid="uid://bdfefqarckrg0" path="res://models/plants/basic_plant/basic_plant.png" id="2_vwimw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ii4kj"]
@@ -23,7 +23,7 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0.0192308, 0.987179)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_6m52l")
+script = ExtResource("1_np8st")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vwimw")
@@ -45,7 +45,7 @@ icon = SubResource("ViewportTexture_ii4kj")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="SlowBar" type="TextureProgressBar" parent="."]
 offset_left = -5.0
 offset_top = -9.0
 offset_right = 5.0

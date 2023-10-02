@@ -69,24 +69,19 @@ func do_action():
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
-			#todo 
-			#OVA DA SE REFACTOR BOZEEE
-
 			if(money_manager.buy(3)):
-				if plant_mode==PLANT_TYPES.BASIC:
-					var plant = basic_plant.instantiate()
-					print(tile_mouse_pos*16)
-					plant.position = tile_mouse_pos*16+Vector2i(8,8)
-					add_child(plant)
-				if plant_mode==PLANT_TYPES.FAST:
-					var plant = fast_plant.instantiate()
-					print(tile_mouse_pos*16)
-					plant.position = tile_mouse_pos*16+Vector2i(8,8)
-					add_child(plant)
-				if plant_mode==PLANT_TYPES.SLOW:
-					var plant = slow_plant.instantiate()
-					print(tile_mouse_pos*16)
-					plant.position = tile_mouse_pos*16+Vector2i(8,8)
+				var plant_classes = {
+	   			PLANT_TYPES.BASIC: basic_plant,
+	  			PLANT_TYPES.FAST: fast_plant,
+				PLANT_TYPES.SLOW: slow_plant
+				}
+	
+				var selected_plant_class = plant_classes.get(plant_mode)
+	
+				if selected_plant_class:
+					var plant = selected_plant_class.instantiate()
+					print(tile_mouse_pos * 16)
+					plant.position = tile_mouse_pos * 16 + Vector2i(8, 8)
 					add_child(plant)
 					
 		if (farming_mode==FARMING_MODES.PICK):

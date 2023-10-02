@@ -19,7 +19,7 @@ func _ready():
 	# Get the Sprite and Timer nodes
 	sprite_node = get_node("Sprite2D")
 	timer_node = get_node("Timer")
-	loading_bar = get_node("TextureProgressBar")
+	loading_bar = get_node("SlowBar")
 	timer_node_2= get_node("Timer2")
 	add_to_group("Plants")
 	

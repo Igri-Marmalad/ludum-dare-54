@@ -46,4 +46,4 @@ func _on_button_pressed():
 
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
-	current_progress+=0.2
+	current_progress+=0.25
