@@ -13,6 +13,8 @@ var basic_plant_node = preload("res://models/plants/basic_plant/basic_plant.tscn
 var zombie_node = preload("res://models/mobs/zombie/zombie.tscn")
 
 
+var grid_width = 32
+
 #id of the tilemap layer
 var ground_layer = 1
 var plant_layer = 2
@@ -116,13 +118,13 @@ func do_action():
 	
 
 		if farming_mode == FARMING_MODES.TILL && retrieve_custom_data(tile_mouse_pos, can_till, ground_layer):
-			var atlas_cord = Vector2i(0, 3) #the id of the tile we want to place
+			var atlas_cord = Vector2i(3, 2) #the id of the tile we want to place
 			tile_map.set_cell(ground_layer, tile_mouse_pos, ground_set_source, atlas_cord)
 
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
-			if tile_mouse_pos * 16 + Vector2i(8, 8) as Vector2 in occupied_tiles:
+			if tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/4) as Vector2 in occupied_tiles:
 				return
 			
 			if(money_manager.buy(3)):
@@ -131,8 +133,8 @@ func do_action():
 	
 				if selected_plant_class:
 					var plant = selected_plant_class.instantiate()
-					print(tile_mouse_pos * 16)
-					plant.position = tile_mouse_pos * 16 + Vector2i(8, 8)
+					print(tile_mouse_pos * grid_width)
+					plant.position = tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/4)
 					plant.connect("free_space", Callable(self, "free_occupied_tile"))
 					add_child(plant)
 					occupied_tiles.append(plant.position)

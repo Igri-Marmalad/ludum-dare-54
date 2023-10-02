@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cyc2lu7jxylt5"]
 
 [ext_resource type="Script" path="res://models/plants/fast_plant/fast_plant.gd" id="1_ttypb"]
-[ext_resource type="Texture2D" uid="uid://bdfefqarckrg0" path="res://models/plants/basic_plant/basic_plant.png" id="2_5r7fx"]
+[ext_resource type="Texture2D" uid="uid://dgfdnel7k63ad" path="res://models/plants/slow_plant/slow_plant.png" id="2_l334f"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ii4kj"]
 
@@ -26,7 +26,7 @@ fill_to = Vector2(0.0192308, 0.987179)
 script = ExtResource("1_ttypb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5r7fx")
+texture = ExtResource("2_l334f")
 hframes = 4
 metadata/_edit_lock_ = true
 
