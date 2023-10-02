@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmj1jnssqldea"]
+
+[ext_resource type="Script" path="res://models/mobs/zombie/zombie.gd" id="1_ugaiv"]
+[ext_resource type="Texture2D" uid="uid://dgvqe4nim3vfd" path="res://models/mobs/zombie/zombie.png" id="2_32txq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h20ke"]
+size = Vector2(32, 32)
+
+[node name="zombie" type="StaticBody2D"]
+script = ExtResource("1_ugaiv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_32txq")
+hframes = 13
+vframes = 6
+
+[node name="Button" type="Button" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h20ke")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,9 +1,17 @@
 extends Node2D
 
+
 @onready var tile_map : TileMap = $TileMap
+
 
 @onready
 var money_manager = get_node("/root/MoneyManager")
+
+# Preload nodes
+var care_package_node = preload("res://models/care_package/care_package.tscn")
+var basic_plant_node = preload("res://models/plants/basic_plant/basic_plant.tscn")
+var zombie_node = preload("res://models/mobs/zombie/zombie.tscn")
+
 
 #id of the tilemap layer
 var ground_layer = 1
@@ -25,6 +33,7 @@ enum PLANT_TYPES {BASIC, FAST, SLOW, OTHER}
 var farming_mode = FARMING_MODES.TILL
 var plant_mode = PLANT_TYPES.BASIC
 
+
 #preloading resources
 var basic_plant = preload("res://models/plants/basic_plant/basic_plant.tscn")
 var fast_plant = preload("res://models/plants/fast_plant/fast_plant.tscn")
@@ -44,13 +53,22 @@ var plant_classes = {
 				PLANT_TYPES.OTHER: other_plant
 				}
 
+
+var rng = RandomNumberGenerator.new()
+var care_package_spawn_time = rng.randf_range(60, 300)
+var zombie_spawn_time = rng.randf_range(5, 10)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("UI").connect("farming_mode_changed", Callable(self, "_on_farming_mode_changed"))
+
 	get_node("UI").connect("seed_signal", Callable(self, "_on_signal_seed_changed"))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	spawn_care_package(delta)
+	spawn_zombie(delta)
 
 func _input(event):
 	#Set mode
@@ -65,6 +83,29 @@ func _input(event):
 			do_action()
 			
 
+# Spawn the care package in between 60 and 300 frames
+func spawn_care_package(delta):
+	care_package_spawn_time -= delta;
+	if(care_package_spawn_time < 0):
+		var care_package = care_package_node.instantiate()
+		care_package.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
+		add_child(care_package)
+		# Reset the care package spawn time
+		care_package_spawn_time = rng.randf_range(60, 300)
+		return
+	return
+	
+# Spawn the care package in between 60 and 300 frames
+func spawn_zombie(delta):
+	zombie_spawn_time -= delta;
+	if(zombie_spawn_time < 0):
+		var zombie = zombie_node.instantiate()
+		zombie.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
+		add_child(zombie)
+		# Reset the care package spawn time
+		zombie_spawn_time = rng.randf_range(3, 10)
+		return
+	return
 
 func do_action():
 		var mouse_pos = get_global_mouse_position()
@@ -80,8 +121,7 @@ func do_action():
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
 			if(money_manager.buy(3)):
-				
-	
+
 				var selected_plant_class = plant_classes.get(plant_mode)
 	
 				if selected_plant_class:

@@ -6,6 +6,9 @@ var timer_node
 var loading_bar
 var timer_node_2
 
+var health = 5
+
+
 @onready
 var money_manager = get_node("/root/MoneyManager")
 # Variables for smooth loading bar interpolation
@@ -49,4 +52,10 @@ func _on_button_pressed():
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
 	current_progress+=0.7
+
+# Attack the plant and destroy if it has no more health
+func attacked(damage):
+	health -= damage
+	if(health <= 0):
+		queue_free()
 
