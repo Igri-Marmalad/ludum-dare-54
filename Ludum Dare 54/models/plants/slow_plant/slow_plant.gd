@@ -6,24 +6,20 @@ var timer_node
 var loading_bar
 var timer_node_2
 
-var health = 5
-
-
 @onready
 var money_manager = get_node("/root/MoneyManager")
 # Variables for smooth loading bar interpolation
 
 var current_progress = 0
 
-#5
-#0.5
-#20
+#10
+#1
+#40
 func _ready():
-	
 	# Get the Sprite and Timer nodes
 	sprite_node = get_node("Sprite2D")
 	timer_node = get_node("Timer")
-	loading_bar = get_node("TextureProgressBar")
+	loading_bar = get_node("SlowBar")
 	timer_node_2= get_node("Timer2")
 	add_to_group("Plants")
 	
@@ -33,7 +29,7 @@ func _ready():
 	timer_node.start()
 	timer_node_2.start()
 	
-
+	
 # Cycle through the spritesheet stopping at the last frame
 func _on_timer_timeout():
 	if sprite_node.frame < sprite_node.hframes - 1:
@@ -46,16 +42,9 @@ func _on_button_pressed():
 	if sprite_node.frame == sprite_node.hframes - 1:
 		if money_manager.get_locked()==0: 
 			queue_free()
-			money_manager.add_coins(5)
+			money_manager.add_coins(15)
 
 
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
-	current_progress+=0.7
-
-# Attack the plant and destroy if it has no more health
-func attacked(damage):
-	health -= damage
-	if(health <= 0):
-		queue_free()
-
+	current_progress+=1.3
