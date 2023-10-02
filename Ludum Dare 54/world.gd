@@ -122,6 +122,9 @@ func do_action():
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
+			if tile_mouse_pos * 16 + Vector2i(8, 8) as Vector2 in occupied_tiles:
+				return
+			
 			if(money_manager.buy(3)):
 
 				var selected_plant_class = plant_classes.get(plant_mode)
