@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kogkhmohh4ft"
-path="res://.godot/imported/hoe.png-3896456337e03e594ef2cfd9fcb0d5ad.ctex"
+uid="uid://dlp5ec03sivpv"
+path="res://.godot/imported/watering_can.png-197cee41263e8759df14876085f87f24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/img/hoe.png"
-dest_files=["res://.godot/imported/hoe.png-3896456337e03e594ef2cfd9fcb0d5ad.ctex"]
+source_file="res://ui/img/watering_can.png"
+dest_files=["res://.godot/imported/watering_can.png-197cee41263e8759df14876085f87f24.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kogkhmohh4ft"
-path="res://.godot/imported/hoe.png-3896456337e03e594ef2cfd9fcb0d5ad.ctex"
+uid="uid://dmban0y2gi2gj"
+path="res://.godot/imported/other_plant.png-cbd9c93ac24ae8ec076d74ac9837c35d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/img/hoe.png"
-dest_files=["res://.godot/imported/hoe.png-3896456337e03e594ef2cfd9fcb0d5ad.ctex"]
+source_file="res://models/plants/other_plant/other_plant.png"
+dest_files=["res://.godot/imported/other_plant.png-cbd9c93ac24ae8ec076d74ac9837c35d.ctex"]
 
 [params]
 

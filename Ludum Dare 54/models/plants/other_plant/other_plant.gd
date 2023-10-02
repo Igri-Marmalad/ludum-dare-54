@@ -6,21 +6,11 @@ var timer_node
 var loading_bar
 var timer_node_2
 
-
-
-
 @onready
 var money_manager = get_node("/root/MoneyManager")
 # Variables for smooth loading bar interpolation
 
-
 var current_progress = 0
-
-#@onready
-#var grid_system = get_node("/root/GridSystem")
-
-signal free_space(posi)
-
 
 #5
 #0.5
@@ -52,7 +42,6 @@ func _on_timer_timeout():
 func _on_button_pressed():
 	if sprite_node.frame == sprite_node.hframes - 1:
 		if money_manager.get_locked()==0: 
-			emit_signal("free_space", position)
 			queue_free()
 			money_manager.add_coins(5)
 
@@ -60,7 +49,6 @@ func _on_button_pressed():
 func _on_timer_2_timeout():	# Update the loading bar value
 	loading_bar.value = current_progress
 	current_progress+=0.7
-
 
 # Attack the plant and destroy if it has no more health
 var health = 5
