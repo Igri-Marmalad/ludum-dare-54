@@ -6,7 +6,7 @@ var money_manager = get_node("/root/MoneyManager")
 func _on_WinGame_button_pressed():
 	var win_game_button = get_node("TabContainer/Upgrades/ScrollContainer/VBoxContainer/WinGame/Button") 
 	if(money_manager.get_coins() >=  int(win_game_button.get_text())):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://start_menu/start_menu.tscn")
 
 
 func _on_show_shop_pressed():

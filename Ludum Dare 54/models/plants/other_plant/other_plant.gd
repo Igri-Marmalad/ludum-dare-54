@@ -58,5 +58,6 @@ var health = 5
 func attacked(damage):
 	health -= damage
 	if(health <= 0):
+		emit_signal("free_space", position)
 		queue_free()
 

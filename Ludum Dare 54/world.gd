@@ -107,7 +107,7 @@ func spawn_zombie(delta):
 		zombie.position = Vector2(randf_range(-100,100), randf_range(-100, 100))
 		add_child(zombie)
 		# Reset the care package spawn time
-		zombie_spawn_time = rng.randf_range(30, 120)
+		zombie_spawn_time = rng.randf_range(3, 7)
 		return
 	return
 
