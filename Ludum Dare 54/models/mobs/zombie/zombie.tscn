@@ -21,6 +21,7 @@ hframes = 13
 vframes = 6
 
 [node name="Button" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,6 +34,7 @@ grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h20ke")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 

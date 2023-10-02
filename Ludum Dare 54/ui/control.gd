@@ -10,15 +10,15 @@ var money_manager = get_node("/root/MoneyManager")
 # Called when the node enters the scene tree for the first time.
 
 #the farmin modes
-@onready var till_button = get_node("GridContainer/till_button")  # Replace with the actual names of your buttons
-@onready var plant_button = get_node("GridContainer/plant")  # Replace with the actual names of your buttons
-@onready var pick_button = get_node("GridContainer/pick")  
+@onready var till_button = get_node("Panel2/GridContainer/till_button")  # Replace with the actual names of your buttons
+@onready var plant_button = get_node("Panel2/GridContainer/plant")  # Replace with the actual names of your buttons
+@onready var pick_button = get_node("Panel2/GridContainer/pick")  
 
 #the available seeds
-@onready var basic = get_node("GridContainer2/basic")  # Replace with the actual names of your buttons
-@onready var fast = get_node("GridContainer2/fast")  # Replace with the actual names of your buttons
-@onready var slow = get_node("GridContainer2/slow")  
-@onready var other = get_node("GridContainer2/other")  
+@onready var basic = get_node("Panel/GridContainer2/basic")  # Replace with the actual names of your buttons
+@onready var fast = get_node("Panel/GridContainer2/fast")  # Replace with the actual names of your buttons
+@onready var slow = get_node("Panel/GridContainer2/slow")  
+@onready var other = get_node("Panel/GridContainer2/other")  
 #used for setting the mode
 var mode = 1
 var seed_mode = 1
@@ -133,10 +133,10 @@ func _other_pressed():
 
 func _set_farming_mode_buttons():
 	original_till = preload("res://ui/img/hoe.png")
-	original_plant = preload("res://ui/img/seed.jpg")
+	original_plant = preload("res://ui/img/seed.png")
 	selected_till = preload("res://ui/img/theselectedhoe.png")
 	selected_plant = preload("res://ui/img/theselectedseed.jpg")
-	original_pick = preload("res://ui/img/pick.jpg")
+	original_pick = preload("res://ui/img/pick.png")
 	selected_pick = preload("res://ui/img/selected_pick.jpg")
 	
 	till_button.connect("pressed", Callable(self, "_on_till_button_pressed"))
