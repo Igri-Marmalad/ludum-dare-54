@@ -113,4 +113,7 @@ func _on_farming_mode_changed(mode):
 		farming_mode = FARMING_MODES.TILL
 		
 		
-
+func free_occupied_tile(pos):
+	pos = pos - Vector2(8, 8)
+	pos = pos / 2
+	occupied_tiles.erase(pos)
