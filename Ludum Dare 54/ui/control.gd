@@ -149,14 +149,14 @@ func _set_farming_mode_buttons():
 	
 func _set_seed_buttons():
 	original_basic = preload("res://ui/img/1.png")
-	original_slow = preload("res://ui/img/3.jpg")
-	original_fast = preload("res://ui/img/2.jpg")
-	original_other =  preload("res://ui/img/4.jpg")
+	original_slow = preload("res://ui/img/3.png")
+	original_fast = preload("res://ui/img/2.png")
+	original_other =  preload("res://ui/img/4.png")
 	
 	selected_basic = preload("res://ui/img/1s.png")
-	selected_slow = preload("res://ui/img/3s.jpg")
-	selected_fast = preload("res://ui/img/2s.jpg")
-	selected_other = preload("res://ui/img/4s.jpg")
+	selected_slow = preload("res://ui/img/3s.png")
+	selected_fast = preload("res://ui/img/2s.png")
+	selected_other = preload("res://ui/img/4s.png")
 	
 	basic.connect("pressed",Callable(self, "_basic_pressed"))
 	slow.connect("pressed",Callable(self, "_slow_pressed"))
@@ -167,5 +167,3 @@ func _set_seed_buttons():
 	slow.texture_normal=original_slow
 	fast.texture_normal=original_fast
 	other.texture_normal=original_other
-
-
