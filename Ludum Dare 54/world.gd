@@ -124,7 +124,7 @@ func do_action():
 		if farming_mode == FARMING_MODES.PLANT && retrieve_custom_data(tile_mouse_pos, can_plant, ground_layer):
 			var atlas_cord = Vector2i(0, 0) #the id of the tile we want to place
 			
-			if tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/2) as Vector2 in occupied_tiles:
+			if tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/4) as Vector2 in occupied_tiles:
 				return
 			
 			if(money_manager.buy(3)):
@@ -134,7 +134,7 @@ func do_action():
 				if selected_plant_class:
 					var plant = selected_plant_class.instantiate()
 					print(tile_mouse_pos * grid_width)
-					plant.position = tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/2)
+					plant.position = tile_mouse_pos * grid_width + Vector2i(grid_width/2, grid_width/4)
 					plant.connect("free_space", Callable(self, "free_occupied_tile"))
 					add_child(plant)
 					occupied_tiles.append(plant.position)
