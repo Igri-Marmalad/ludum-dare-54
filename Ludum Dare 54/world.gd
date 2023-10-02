@@ -60,7 +60,7 @@ var occupied_tiles = []
 
 var rng = RandomNumberGenerator.new()
 var care_package_spawn_time = rng.randf_range(60, 300)
-var zombie_spawn_time = rng.randf_range(30, 120)
+var zombie_spawn_time = rng.randf_range(10, 15)
 
 
 # Called when the node enters the scene tree for the first time.
