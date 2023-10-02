@@ -167,3 +167,5 @@ func _set_seed_buttons():
 	slow.texture_normal=original_slow
 	fast.texture_normal=original_fast
 	other.texture_normal=original_other
+
+
